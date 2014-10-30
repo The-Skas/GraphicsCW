@@ -18,6 +18,7 @@ import static org.junit.Assert.*;
  * @author skas
  */
 public class Vector3DTest {
+    private Vector3D vector;
     
     public Vector3DTest() {
     }
@@ -32,6 +33,7 @@ public class Vector3DTest {
     
     @Before
     public void setUp() {
+        this.vector = new Vector3D(5,5,5);
     }
     
     @After
@@ -54,16 +56,13 @@ public class Vector3DTest {
 
     /**
      * Test of clone method, of class Vector3D.
+     * @throws java.lang.Exception
      */
     @Test
     public void testClone() throws Exception {
-        System.out.println("clone");
-        Vector3D instance = null;
-        Vector3D expResult = null;
-        Vector3D result = instance.clone();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        Vector3D result = vector.clone();
+        assertEquals(vector, result);
     }
 
     /**
@@ -115,11 +114,8 @@ public class Vector3DTest {
      */
     @Test
     public void testNormalize() {
-        System.out.println("normalize");
-        Vector3D instance = null;
-        instance.normalize();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        this.vector.normalize();
+        assertEquals(vector.magnitude(), 1.0, 0.00001);
     }
 
     /**
@@ -127,13 +123,24 @@ public class Vector3DTest {
      */
     @Test
     public void testMagnitude() {
-        System.out.println("magnitude");
-        Vector3D instance = null;
-        double expResult = 0.0;
-        double result = instance.magnitude();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Vector3D vecMagnitude;
+    }
+
+    /**
+     * Test of transform method, of class Vector3D.
+     */
+    @Test
+    public void testTransform() {
+        
+    }
+
+    /**
+     * Test of equals method, of class Vector3D.
+     */
+    @Test
+    public void testEquals() {
+        assertEquals(this.equals(this), true);
+      
     }
     
 }

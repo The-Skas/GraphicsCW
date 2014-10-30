@@ -70,4 +70,17 @@ public class Vector3D implements Cloneable, Transformable<Vector3D>
         
         return new Vector3D(dstX, dstY, dstZ);
     }
+    
+  @Override
+    public boolean equals(Object o)
+    {
+        if (o instanceof Vector3D)
+        {
+            Vector3D v2 = (Vector3D) o;
+            
+            return (this.x == v2.x && this.y == v2.y && this.z == v2.z);
+        }
+        
+        return false;
+    }
 }
