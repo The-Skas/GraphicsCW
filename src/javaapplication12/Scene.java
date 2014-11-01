@@ -41,8 +41,7 @@ public class Scene
       //Map through each Object
       for(int i = 0; i <  obj.length; i++)
       {
-          int numberOfFaces = obj[i].face.length;
-          int numberOfVerticesInFace = obj[i].face[0].index.length;
+          
           Point3D [] array_of_vertices = obj[i].vertex;
           
           //For each Object has faces, loop through
@@ -53,7 +52,7 @@ public class Scene
               int [] vertices_indices_in_face = curr_face.index;
               int num_of_vertices_indices_in_face = vertices_indices_in_face.length;
               
-              //Seems horribly inefficient
+              //Each face as N, vertices, keep order and map to an array.
               int [] xArr = new int[num_of_vertices_indices_in_face];
               int [] yArr = new int[num_of_vertices_indices_in_face];
               
@@ -71,10 +70,17 @@ public class Scene
               
               //set color then draw
               g.setColor(curr_face.color);
-              g.drawPolygon(xArr, yArr, num_of_vertices_indices_in_face);
+              
+              
+              boolean isFrontFace = Point3D.isFrontFace(array_of_vertices[vertices_indices_in_face[0]], array_of_vertices[vertices_indices_in_face[1]], array_of_vertices[vertices_indices_in_face[2]], c.getVPN());
+              
+              if(isFrontFace)
+              {
+                g.fillPolygon(xArr, yArr, num_of_vertices_indices_in_face);
+              }
           }
-            //Each face has a color
-            //Each face as N, vertices, keep order and map to an array.
+           
+            
           
       }
       
