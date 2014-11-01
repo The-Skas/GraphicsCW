@@ -14,6 +14,12 @@ public class Vector3D implements Cloneable, Transformable<Vector3D>
 {
   public double x,y,z;
   
+  public Vector3D(Point3D p)
+  {
+      this.x = p.x;
+      this.y = p.y;
+      this.z = p.z;
+  }
   public Vector3D(double X, double Y, double Z)
   {
       this.x = X;
@@ -70,7 +76,8 @@ public class Vector3D implements Cloneable, Transformable<Vector3D>
         
         return new Vector3D(dstX, dstY, dstZ);
     }
-    
+   
+
   @Override
     public boolean equals(Object o)
     {
@@ -83,4 +90,6 @@ public class Vector3D implements Cloneable, Transformable<Vector3D>
         
         return false;
     }
+    
+    
 }

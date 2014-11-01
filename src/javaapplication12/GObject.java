@@ -29,7 +29,8 @@ public class GObject {
       this.face = f;
   }
 
-  public GObject(String fileName) {
+  public GObject(String fileName) 
+  {
  
     String fileContent = readFile(fileName);
     String[] lines = fileContent.split(System.getProperty("line.separator"));
@@ -40,7 +41,6 @@ public class GObject {
         lines[i]=lines[i].replace("\n", "").replace("\r", "");
     }
    
-    System.out.println(lines[IND_OF_VERTICES_SIZE]+ " Should be 8.");
     
     parseVertices(lines);
     
@@ -187,7 +187,7 @@ public class GObject {
   {
       System.out.println("Working Directory = " +
               System.getProperty("user.dir"));
-      GObject object = new GObject("cube.dat.txt");
+      GObject object = new GObject("pyramid.dat");
   }
 
 

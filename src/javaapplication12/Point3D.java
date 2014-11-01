@@ -13,7 +13,29 @@ package javaapplication12;
 public class Point3D implements Transformable<Point3D>
 {
   public double x,y,z;
+  
+  /**
+   * Static Methods
+   */
+  //assuming counterclockwise, return face Normal
+    public static Vector3D faceNormal(Point3D p1, Point3D p2, Point3D p3)
+    {
+        Vector3D v1 = new Vector3D(p2.subtract(p1));
 
+        Vector3D v2 = new Vector3D(p3.subtract(p1));
+
+        return v1.crossProduct(v2);
+    }
+
+    public static boolean isFrontFace(Point3D p1, Point3D p2, Point3D p3, Vector3D vpn){
+       
+        Vector3D faceNormal = Point3D.faceNormal(p1, p2, p3);
+        
+        //If the dotproduct between the facenormal and vpn is positive,
+        //this means it is a 'front face'
+        return (faceNormal.dotProduct(vpn) > 0);
+        
+    }
   public Point3D(double X,double Y,double Z)
   {
       this.x = X;
@@ -47,6 +69,23 @@ public class Point3D implements Transformable<Point3D>
         
         return new Point3D(dstX, dstY, dstZ);
     }
+    
+    public Vector3D vector(Point3D p)
+    {
+        return new Vector3D(this.x - p.x, this.y - p.y, this.z - p.z);
+    }
+    
+
+    /**
+     * 
+     * Arithmetic Operations
+     * 
+     */
+    public Point3D subtract(Point3D p)
+    {
+        return new Point3D(this.x - p.x, this.y - p.y, this.z - p.z);
+    }
+    
   public String toString(){
       return "P( x= "+this.x+" , y= "+this.y+" , z= "+this.z+" )";
   }
