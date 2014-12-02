@@ -26,13 +26,14 @@ public class PerspectiveCamera extends Camera
   @Override
   protected Point3D projectionTransform(final Point3D p){
 //      return super.projectionTransform(p);
-      Point3D d = p.subtract(this.cop);
+      double d = this.cop.distance(p);
       
-      double trans_X = d.x / d.z;
-      double trans_Y = d.y / d.z;
-      double trans_Z = d.z/d.z;
+      
+      double trans_X = p.x/d;
+      double trans_Y = p.y/d;
+      
      
-      return new Point3D(trans_X, trans_Y, trans_Z);
+      return new Point3D(trans_X, trans_Y, 0);
   }
 
   public void setupCOP(Point3D cop_)

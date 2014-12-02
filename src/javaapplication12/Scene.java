@@ -37,7 +37,7 @@ public class Scene
   }
 
   //wait until next lab for Camera
-  public void draw(Camera c, Graphics g){
+  public void draw(Camera camera, Graphics g){
       //Map through each Object
       for(int i = 0; i <  obj.length; i++)
       {
@@ -61,9 +61,9 @@ public class Scene
                   Point3D vertex = array_of_vertices[vertices_indices_in_face[k]];
                   
                   //Project (translate) 'vertex' 
-                  vertex = c.project(vertex);
+                  vertex = camera.project(vertex);
                   
-                  //Use mutateed  vertex
+                  //Use mutated  vertex
                   xArr[k] =(int) vertex.x;
                   yArr[k] =(int) vertex.y;
               }
@@ -72,7 +72,10 @@ public class Scene
               g.setColor(curr_face.color);
               
               
-              boolean isFrontFace = Point3D.isFrontFace(array_of_vertices[vertices_indices_in_face[0]], array_of_vertices[vertices_indices_in_face[1]], array_of_vertices[vertices_indices_in_face[2]], c.getVPN());
+              Point3D transV1 = camera.projectionTransform(array_of_vertices[vertices_indices_in_face[0]]);
+              Point3D transV2 = camera.projectionTransform(array_of_vertices[vertices_indices_in_face[1]]);
+              Point3D transV3 = camera.projectionTransform(array_of_vertices[vertices_indices_in_face[2]]);
+              boolean isFrontFace = Point3D.isFrontFace(transV1, transV2, transV3, camera.getVPN());
               
               if(isFrontFace)
               {
