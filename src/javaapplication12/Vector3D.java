@@ -31,7 +31,7 @@ public class Vector3D implements Cloneable, Transformable<Vector3D>
       return "Vector - X: "+this.x+" Y: "+this.y+" Z: "+this.z;
   }
 
-  public Vector3D clone() throws CloneNotSupportedException
+  public Vector3D clone()
   {
       return new Vector3D(x,y,z);
   }
@@ -67,13 +67,22 @@ public class Vector3D implements Cloneable, Transformable<Vector3D>
       return (Math.sqrt(x*x + y*y + z*z));
   }
 
+  public Vector3D abs()
+  {
+      this.x = Math.abs(this.x);
+      this.y = Math.abs(this.y);
+      this.z = Math.abs(this.z);
+      
+      return this;
+  }
+  
     @Override
     public Vector3D transform(Matrix m) 
     {
         double dstX = this.x * m.m[0][0] + this.y * m.m[1][0] + this.z * m.m[2][0] + m.m[3][0];
         double dstY = this.x * m.m[0][1] + this.y * m.m[1][1] + this.z * m.m[2][1] + m.m[3][1];
         double dstZ = this.x * m.m[0][2] + this.y * m.m[1][2] + this.z * m.m[2][2] + m.m[3][2];
-        
+
         return new Vector3D(dstX, dstY, dstZ);
     }
    

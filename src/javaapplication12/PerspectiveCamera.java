@@ -12,7 +12,12 @@ package javaapplication12;
  */
 public class PerspectiveCamera extends Camera
 {
-  private Point3D cop=new Point3D(0,0,-4); //centre of projection
+  public Point3D cop=new Point3D(0,0,-4); //centre of projection
+  public Point3D vrp=new Point3D(0,0,0); //view reference point: the origin of camera coordinating system
+ 
+  public Vector3D vpn=new Vector3D(0,0,0);
+  public Vector3D vuv=new Vector3D(0,1,0);  //view plane normal (axis n) and the view up vector (axis v)
+
   public PerspectiveCamera(double xmin_, double xmax_, double ymin_, double ymax_)
   {
       super( xmin_,  xmax_,  ymin_,  ymax_);
@@ -27,19 +32,31 @@ public class PerspectiveCamera extends Camera
   protected Point3D projectionTransform(final Point3D p){
 //      return super.projectionTransform(p);
       double d = this.cop.distance(p);
+      Vector3D diffV = this.cop.subtract(p).vector();
+//      Vector3D d = diffV.clone();
+//      d.x= Math.cos(vpn.y)* (Math.sin(vpn.y)*diffV.y + Math.cos(vpn.z)*diffV.x) - Math.sin(vpn.y)*diffV.z;
       
-      
-      double trans_X = p.x/d;
-      double trans_Y = p.y/d;
+      double trans_X = -diffV.x/diffV.z;
+      double trans_Y = -diffV.y/diffV.z;
       
      
-      return new Point3D(trans_X, trans_Y, 0);
+      return new Point3D(trans_X, trans_Y, -diffV.z);
   }
-
+  
+  @Override
+  protected Point3D cameraTransform(final Point3D p)
+  {
+      return p;
+  }
   public void setupCOP(Point3D cop_)
   {
       this.cop = cop_;
   }     
 
-  
+  public void setupUVN(Point3D vrp_, Vector3D vpn_, Vector3D vuv_)
+  {
+      this.vrp =vrp_;
+      this.vpn = vpn_;
+      this.vuv = vuv_;
+  }
 }

@@ -70,9 +70,9 @@ public class Point3D implements Transformable<Point3D>
         return new Point3D(dstX, dstY, dstZ);
     }
     
-    public Vector3D vector(Point3D p)
+    public Vector3D vector()
     {
-        return new Vector3D(this.x - p.x, this.y - p.y, this.z - p.z);
+        return new Vector3D(this.x, this.y , this.z);
     }
     
 
