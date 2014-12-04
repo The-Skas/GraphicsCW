@@ -31,16 +31,19 @@ public class PerspectiveCamera extends Camera
   @Override
   protected Point3D projectionTransform(final Point3D p){
 //      return super.projectionTransform(p);
-      double d = this.cop.distance(p);
+      //double d = this.cop.distance(p);
       Vector3D diffV = this.cop.subtract(p).vector();
-//      Vector3D d = diffV.clone();
-//      d.x= Math.cos(vpn.y)* (Math.sin(vpn.y)*diffV.y + Math.cos(vpn.z)*diffV.x) - Math.sin(vpn.y)*diffV.z;
-      
-      double trans_X = -diffV.x/diffV.z;
-      double trans_Y = -diffV.y/diffV.z;
-      
+      Vector3D d = diffV.clone();
      
-      return new Point3D(trans_X, trans_Y, -diffV.z);
+//      Vector3D d = diffV.clone();
+      d.x= Math.cos(vpn.y)* (Math.sin(vpn.z)*diffV.y + Math.cos(vpn.z)*diffV.x) - Math.sin(vpn.y)*diffV.z;
+      d.y = Math.sin(vpn.x) * (Math.cos(vpn.y)*diffV.z + Math.sin(vpn.y)*(Math.sin(vpn.z)*diffV.y + Math.cos(vpn.z)*diffV.x)) + Math.cos(vpn.x)*(Math.cos(vpn.z)*diffV.y - Math.sin(vpn.z)*diffV.x); 
+      d.z = Math.cos(vpn.x) * (Math.cos(vpn.y)*diffV.z + Math.sin(vpn.y)*(Math.sin(vpn.z)*diffV.y + Math.cos(vpn.z)*diffV.x)) - Math.sin(vpn.x)*(Math.cos(vpn.z)*diffV.y - Math.sin(vpn.z)*diffV.x);
+//      double trans_X = -diffV.x/diffV.z;
+//      double trans_X = -diffV.y/diffV.z;
+      double trans_X = d.x/d.z;
+      double trans_Y = d.y/d.z;
+      return new Point3D(trans_X, trans_Y, d.z);
   }
   
   @Override

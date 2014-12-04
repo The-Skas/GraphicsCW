@@ -52,15 +52,15 @@ public class PerspectiveAnimator extends ParallelAnimator
                 
                 System.out.println("new Cop - "+cam.cop.x);
             }
-            System.out.println(e.getKeyCode());
+            System.out.println(cam.vpn.z);
             
             if(e.getKeyChar() == 'w')
             {
-                cam.cop.z -= 1;
+                cam.vpn.z -= 0.1;
             }
             if(e.getKeyChar() == 's')
             {
-                cam.cop.z += 1;
+                cam.vpn.z += 0.1;
             }
         }
 
