@@ -4,12 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/skas/Documents/Uni/Year-3/Graphics/W2/lab/JavaApplication12/src/javaapplication12/Vector3D.java</file>
-            <file>file:/Users/skas/Documents/Uni/Year-3/Graphics/W2/lab/JavaApplication12/src/javaapplication12/Matrix.java</file>
             <file>file:/Users/skas/Documents/Uni/Year-3/Graphics/W2/lab/JavaApplication12/src/javaapplication12/Scene.java</file>
-            <file>file:/Users/skas/Documents/Uni/Year-3/Graphics/W2/lab/JavaApplication12/src/javaapplication12/SomeStr.java</file>
             <file>file:/Users/skas/Documents/Uni/Year-3/Graphics/W2/lab/JavaApplication12/src/javaapplication12/Camera.java</file>
             <file>file:/Users/skas/Documents/Uni/Year-3/Graphics/W2/lab/JavaApplication12/src/javaapplication12/ParallelAnimator.java</file>
-            <file>file:/Users/skas/Documents/Uni/Year-3/Graphics/W2/lab/JavaApplication12/src/javaapplication12/Animator.java</file>
+            <file>file:/Users/skas/Documents/Uni/Year-3/Graphics/W2/lab/JavaApplication12/src/javaapplication12/PerspectiveCamera.java</file>
+            <file>file:/Users/skas/Documents/Uni/Year-3/Graphics/W2/lab/JavaApplication12/src/javaapplication12/PerspectiveAnimator.java</file>
         </group>
     </open-files>
 </project-private>

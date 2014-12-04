@@ -54,13 +54,15 @@ public class Vector3D implements Cloneable, Transformable<Vector3D>
   }
   
   //Return a Normalized Vector.
-  public void normalize()
+  public Vector3D normalize()
   {
       double magnitude = this.magnitude();
       
-      this.x /= magnitude;
-      this.y /= magnitude;
-      this.z /= magnitude;
+      double x = this.x/magnitude;
+      double y = this.y/magnitude;
+      double z = this.z/magnitude;
+      
+      return new Vector3D(x,y,z);
   } 
   
   public double magnitude(){
@@ -75,7 +77,14 @@ public class Vector3D implements Cloneable, Transformable<Vector3D>
       
       return this;
   }
-  
+  public Vector3D multiply(Vector3D vec)
+  {
+      double multX = this.x * vec.x;
+      double multY = this.y * vec.y;
+      double multZ = this.z * vec.z;
+      
+      return new Vector3D(multX, multY, multZ);
+  }
     @Override
     public Vector3D transform(Matrix m) 
     {

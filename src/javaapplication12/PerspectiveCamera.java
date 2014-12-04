@@ -25,7 +25,7 @@ public class PerspectiveCamera extends Camera
   @Override
   public Vector3D getVPN()
   {
-      return new Vector3D(0,0,1);
+      return (vpn.normalize().multiply(this.cop.vector()));
   }
 
   @Override

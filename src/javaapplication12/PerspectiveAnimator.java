@@ -27,13 +27,13 @@ public class PerspectiveAnimator extends ParallelAnimator
             if(e.getKeyCode() == 39)
             {
 
-                cam.cop.x += 1;
+                cam.cop.y -= 1;
                 
                 System.out.println("new Cop - "+cam.cop.x);
             }
             if(e.getKeyCode() == 37)
             {
-                cam.cop.x -= 1;
+                cam.cop.y += 1;
                 
                 System.out.println("new Cop - "+cam.cop.x);
             }
@@ -41,26 +41,36 @@ public class PerspectiveAnimator extends ParallelAnimator
             if(e.getKeyCode() == 40)
             {
                 
-                cam.cop.y += 1;
+                cam.cop.x += 1;
                 
                 System.out.println("new Cop - "+cam.cop.x);
             }
             if(e.getKeyCode() == 38)
             {
                 
-                cam.cop.y -=1;
+                cam.cop.x -=1;
                 
                 System.out.println("new Cop - "+cam.cop.x);
             }
-            System.out.println(cam.vpn.z);
             
             if(e.getKeyChar() == 'w')
             {
-                cam.vpn.z -= 0.1;
+                cam.cop.z -= 1;
             }
-            if(e.getKeyChar() == 's')
+            else if(e.getKeyChar() == 's')
             {
-                cam.vpn.z += 0.1;
+                cam.cop.z += 1;
+            }
+                
+            System.out.println("VPNZ is -" +cam.vpn.z);
+            
+            if(e.getKeyChar() == 'e')
+            {
+                cam.vpn.z -= 0.2;
+            }
+            else if(e.getKeyChar() == 'q')
+            {
+                cam.vpn.z += 0.2;
             }
         }
 
